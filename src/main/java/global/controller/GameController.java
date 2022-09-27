@@ -1,6 +1,7 @@
 package global.controller;
 
 import global.game.Board;
+import global.game.BoardAnalyzer;
 import global.game.Faction;
 import global.game.Move;
 
@@ -8,6 +9,7 @@ public abstract class GameController {
     protected final int playId;
     protected final Faction myFaction;
     protected Board board;
+    protected BoardAnalyzer analyzer;
     private Move move;
 
     public GameController(int playId, Faction myFaction) {

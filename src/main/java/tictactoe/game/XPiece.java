@@ -19,4 +19,9 @@ public class XPiece extends Faction {
     public Faction getOppositeFaction() {
         return new OPiece();
     }
+
+    @Override
+    public String toString() {
+        return Piece.X.toString();
+    }
 }

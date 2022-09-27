@@ -6,4 +6,9 @@ public abstract class Faction {
         return !isEnemyFaction(factionToCompare);
     }
     public abstract Faction getOppositeFaction();
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
