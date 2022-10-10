@@ -1,5 +1,7 @@
 package global.game;
 
+import global.faction.Faction;
+
 public abstract class BoardAnalyzer {
 
     protected final Board board;

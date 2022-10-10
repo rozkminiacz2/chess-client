@@ -2,7 +2,7 @@ package global.controller;
 
 import global.game.Board;
 import global.game.BoardAnalyzer;
-import global.game.Faction;
+import global.faction.Faction;
 import global.game.Move;
 
 public abstract class GameController {

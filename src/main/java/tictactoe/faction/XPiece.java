@@ -1,15 +1,17 @@
-package tictactoe.game;
+package tictactoe.faction;
 
-import global.game.Faction;
+import global.faction.Faction;
 
-public class OPiece extends Faction {
+public class XPiece extends Faction {
+
+    XPiece() {}
 
     @Override
     public boolean isEnemyFaction(Faction factionToCompare) {
-        if (factionToCompare instanceof XPiece) {
+        if (factionToCompare instanceof OPiece) {
             return true;
         }
-        if (factionToCompare instanceof OPiece) {
+        if (factionToCompare instanceof XPiece) {
             return false;
         }
         throw new IllegalArgumentException("Unexpected Faction class: " + factionToCompare.getClass());
@@ -17,11 +19,11 @@ public class OPiece extends Faction {
 
     @Override
     public Faction getOppositeFaction() {
-        return new XPiece();
+        return new OPiece();
     }
 
     @Override
     public String toString() {
-        return Piece.O.toString();
+        return Piece.X.toString();
     }
 }

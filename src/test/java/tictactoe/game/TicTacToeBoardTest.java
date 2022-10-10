@@ -1,29 +1,27 @@
 package tictactoe.game;
 
 import global.game.Coord;
-import global.game.Faction;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static tictactoe.game.Piece.*;
+import static tictactoe.faction.Piece.*;
+import static tictactoe.faction.TicTacToeFactionFactory.XPiece;
+import static tictactoe.faction.TicTacToeFactionFactory.OPiece;
 
 public class TicTacToeBoardTest {
 
-    private final Faction x = new XPiece();
-    private final Faction o = new OPiece();
-
 
     @Test
-    void shouldEvaluateNextMove() {
+    void shouldEvaluateNextMove1() {
         TicTacToeBoard board = new TestBoardCreator()
                 .withRow0(O, X, E)
                 .withRow1(O, X, E)
                 .withRow2(E, E, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(x)).isEqualTo(new Coord(2, 1));
-        assertThat(analyzer.getNextMoveCoord(o)).isEqualTo(new Coord(2, 0));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(new Coord(2, 1));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(new Coord(2, 0));
     }
 
     @Test
@@ -34,8 +32,8 @@ public class TicTacToeBoardTest {
                 .withRow2(E, E, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(x)).isEqualTo(new Coord(2, 2));
-        assertThat(analyzer.getNextMoveCoord(o)).isEqualTo(new Coord(2, 2));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(new Coord(2, 2));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(new Coord(2, 2));
     }
 
     @Test
@@ -46,8 +44,8 @@ public class TicTacToeBoardTest {
                 .withRow2(X, E, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(x)).isEqualTo(new Coord(0, 0));
-        assertThat(analyzer.getNextMoveCoord(o)).isEqualTo(new Coord(0, 0));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(new Coord(0, 0));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(new Coord(0, 0));
     }
 
     @Test
@@ -58,8 +56,8 @@ public class TicTacToeBoardTest {
                 .withRow2(E, E, X)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(x)).isEqualTo(new Coord(0, 2));
-        assertThat(analyzer.getNextMoveCoord(o)).isEqualTo(new Coord(0, 2));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(new Coord(0, 2));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(new Coord(0, 2));
     }
 
     @Test
@@ -69,9 +67,8 @@ public class TicTacToeBoardTest {
                 .withRow1(E, X, O)
                 .withRow2(E, E, E)
                 .build();
-        System.out.println(board.toString());
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(x)).usingRecursiveComparison().isEqualTo(new Coord(2, 1));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).usingRecursiveComparison().isEqualTo(new Coord(2, 1));
     }
 
     @Test
@@ -82,8 +79,7 @@ public class TicTacToeBoardTest {
                 .withRow2(E, O, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        System.out.println(board.toString());
-        assertThat(analyzer.getNextMoveCoord(o)).usingRecursiveComparison().isEqualTo(new Coord(1, 1));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).usingRecursiveComparison().isEqualTo(new Coord(1, 1));
     }
 
     @Test
@@ -94,8 +90,7 @@ public class TicTacToeBoardTest {
                 .withRow2(E, O, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        System.out.println(board.toString());
-        assertThat(analyzer.getNextMoveCoord(o)).usingRecursiveComparison().isEqualTo(new Coord(1, 1));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).usingRecursiveComparison().isEqualTo(new Coord(1, 1));
     }
 
     @Test
@@ -106,23 +101,33 @@ public class TicTacToeBoardTest {
                 .withRow2(E, E, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        System.out.println(board.toString());
-        assertThat(analyzer.getNextMoveCoord(o))
+        assertThat(analyzer.getNextMoveCoord(OPiece()))
                 .usingRecursiveComparison()
-                .isIn(new Coord(0, 2), new Coord(2, 2), new Coord(2, 2), new Coord(0, 0));
+                .isIn(new Coord(0, 2), new Coord(2, 0), new Coord(2, 2), new Coord(0, 0));
     }
 
     @Test
-    void shouldThrowRuntimeExceptionDueToBoardStateValidationFailures() {
+    void shouldThrowRuntimeExceptionDueToBoardStateValidationFailures1() {
         TicTacToeBoard board = new TestBoardCreator()
                 .withRow0(O, X, E)
                 .withRow1(X, O, X)
                 .withRow2(E, E, X)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThatThrownBy(() -> {
-            analyzer.getNextMoveCoord(x);
-        })
+        assertThatThrownBy(() -> analyzer.getNextMoveCoord(XPiece()))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("Board validation failure. Invalid pieces count.");
+    }
+
+    @Test
+    void shouldThrowRuntimeExceptionDueToBoardStateValidationFailures2() {
+        TicTacToeBoard board = new TestBoardCreator()
+                .withRow0(O, O, E)
+                .withRow1(X, O, O)
+                .withRow2(E, E, X)
+                .build();
+        TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
+        assertThatThrownBy(() -> analyzer.getNextMoveCoord(XPiece()))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("Board validation failure. Invalid pieces count.");
     }

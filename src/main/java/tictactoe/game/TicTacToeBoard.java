@@ -2,7 +2,10 @@ package tictactoe.game;
 
 import global.game.Board;
 import global.game.Coord;
-import global.game.Faction;
+import global.faction.Faction;
+import tictactoe.faction.OPiece;
+import tictactoe.faction.Piece;
+import tictactoe.faction.XPiece;
 
 public class TicTacToeBoard extends Board {
     public final int BOARD_SIZE = 3;

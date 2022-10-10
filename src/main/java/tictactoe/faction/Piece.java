@@ -1,4 +1,4 @@
-package tictactoe.game;
+package tictactoe.faction;
 
 public enum Piece {
     X,

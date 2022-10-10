@@ -1,6 +1,6 @@
 package global.connector;
 
-import global.game.Faction;
+import global.faction.Faction;
 import global.game.Move;
 import global.game.Status;
 

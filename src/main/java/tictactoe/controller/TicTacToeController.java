@@ -2,7 +2,7 @@ package tictactoe.controller;
 
 import global.controller.GameController;
 import global.game.Coord;
-import global.game.Faction;
+import global.faction.Faction;
 import global.game.Move;
 import tictactoe.game.TicTacToeBoard;
 import tictactoe.game.TicTacToeBoardAnalyzer;

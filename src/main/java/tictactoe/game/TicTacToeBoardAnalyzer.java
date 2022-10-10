@@ -2,7 +2,7 @@ package tictactoe.game;
 
 import global.game.BoardAnalyzer;
 import global.game.Coord;
-import global.game.Faction;
+import global.faction.Faction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
     }
 
     private Coord getRandomEmptyCornerMove() {
-        List<Coord> freeCoords = new ArrayList();
+        List<Coord> freeCoords = new ArrayList<>();
         if (isFieldEmpty(new Coord(0, 0))) {
             freeCoords.add(new Coord(0, 0));
         }

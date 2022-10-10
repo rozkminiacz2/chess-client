@@ -1,4 +1,4 @@
-package global.game;
+package global.faction;
 
 public abstract class Faction {
     public abstract boolean isEnemyFaction(Faction factionToCompare);

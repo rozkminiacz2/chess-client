@@ -1,10 +1,14 @@
 package tictactoe.game;
 
 import global.game.Coord;
+import tictactoe.faction.Piece;
+
+import static tictactoe.faction.TicTacToeFactionFactory.XPiece;
+import static tictactoe.faction.TicTacToeFactionFactory.OPiece;
 
 public class TestBoardCreator {
 
-    private TicTacToeBoard board = new TicTacToeBoard(new XPiece());
+    private final TicTacToeBoard board = new TicTacToeBoard(XPiece());
 
     public TestBoardCreator withRow0(Piece p1, Piece p2, Piece p3) {
         createRow(0, p1, p2, p3);
@@ -33,10 +37,10 @@ public class TestBoardCreator {
 
     private void insertPiece(int row, int column, Piece piece) {
         if (piece.equals(Piece.X)) {
-            board.insert(new XPiece(), new Coord(row, column));
+            board.insert(XPiece(), new Coord(row, column));
         }
         if (piece.equals(Piece.O)) {
-            board.insert(new OPiece(), new Coord(row, column));
+            board.insert(OPiece(), new Coord(row, column));
         }
     }
 }
