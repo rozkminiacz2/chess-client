@@ -19,7 +19,7 @@ public class XPiece extends Faction {
 
     @Override
     public Faction getOppositeFaction() {
-        return new OPiece();
+        return TicTacToeFactionFactory.OPiece();
     }
 
     @Override

@@ -20,7 +20,7 @@ public abstract class GameController {
 
     public Move getNextMove() {
         if (move == null) {
-            return calculateNextMove();
+            move = calculateNextMove();
         }
         return move;
     }
