@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static global.game.CoordManager.coord;
+
 public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
 
     public TicTacToeBoardAnalyzer(TicTacToeBoard board) {
@@ -34,17 +36,17 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
 
     private Coord getRandomEmptyCornerMove() {
         List<Coord> freeCoords = new ArrayList<>();
-        if (isFieldEmpty(new Coord(0, 0))) {
-            freeCoords.add(new Coord(0, 0));
+        if (isFieldEmpty(coord(0, 0))) {
+            freeCoords.add(coord(0, 0));
         }
-        if (isFieldEmpty(new Coord(0, 2))) {
-            freeCoords.add(new Coord(0, 2));
+        if (isFieldEmpty(coord(0, 2))) {
+            freeCoords.add(coord(0, 2));
         }
-        if (isFieldEmpty(new Coord(2, 0))) {
-            freeCoords.add(new Coord(2, 0));
+        if (isFieldEmpty(coord(2, 0))) {
+            freeCoords.add(coord(2, 0));
         }
-        if (isFieldEmpty(new Coord(2, 2))) {
-            freeCoords.add(new Coord(2, 2));
+        if (isFieldEmpty(coord(2, 2))) {
+            freeCoords.add(coord(2, 2));
         }
         if (freeCoords.isEmpty()) {
             throw new RuntimeException("Expected free coord at any corner.");
@@ -54,23 +56,23 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
     }
 
     private boolean isAnyCornerFieldEmpty() {
-        if (isFieldEmpty(new Coord(0, 0))) {
+        if (isFieldEmpty(coord(0, 0))) {
             return true;
         }
-        if (isFieldEmpty(new Coord(0, 2))) {
+        if (isFieldEmpty(coord(0, 2))) {
             return true;
         }
-        if (isFieldEmpty(new Coord(2, 0))) {
+        if (isFieldEmpty(coord(2, 0))) {
             return true;
         }
-        if (isFieldEmpty(new Coord(2, 2))) {
+        if (isFieldEmpty(coord(2, 2))) {
             return true;
         }
         return false;
     }
 
     private boolean isMidFieldEmpty() {
-        return isFieldEmpty(new Coord(1, 1));
+        return isFieldEmpty(coord(1, 1));
     }
 
     private void validateBoard(Faction myFaction) {
@@ -90,13 +92,13 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
 
     private int getNumberOfPiecesInColumn(Faction myFaction, int col) {
         int counter = 0;
-        if (checkForFactionPiecePresence(new Coord(0, col), myFaction)) {
+        if (checkForFactionPiecePresence(coord(0, col), myFaction)) {
             counter++;
         }
-        if (checkForFactionPiecePresence(new Coord(1, col), myFaction)) {
+        if (checkForFactionPiecePresence(coord(1, col), myFaction)) {
             counter++;
         }
-        if (checkForFactionPiecePresence(new Coord(2, col), myFaction)) {
+        if (checkForFactionPiecePresence(coord(2, col), myFaction)) {
             counter++;
         }
         return counter;
@@ -154,13 +156,13 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
 
     private int getNumberOfPiecesInRow(Faction myFaction, int row) {
         int counter = 0;
-        if (checkForFactionPiecePresence(new Coord(row, 0), myFaction)) {
+        if (checkForFactionPiecePresence(coord(row, 0), myFaction)) {
             counter++;
         }
-        if (checkForFactionPiecePresence(new Coord(row, 1), myFaction)) {
+        if (checkForFactionPiecePresence(coord(row, 1), myFaction)) {
             counter++;
         }
-        if (checkForFactionPiecePresence(new Coord(row, 2), myFaction)) {
+        if (checkForFactionPiecePresence(coord(row, 2), myFaction)) {
             counter++;
         }
         return counter;
@@ -188,22 +190,22 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
     private boolean isFactionAboutToWinDiagonally1(Faction faction) {
         int numberOfMyPieces = 0;
         int numberOfOpponentPieces = 0;
-        if (checkForFactionPiecePresence(new Coord(0, 0), faction)) {
+        if (checkForFactionPiecePresence(coord(0, 0), faction)) {
             numberOfMyPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(0, 0), faction.getOppositeFaction())) {
+        if (checkForFactionPiecePresence(coord(0, 0), faction.getOppositeFaction())) {
             numberOfOpponentPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(1, 1), faction)) {
+        if (checkForFactionPiecePresence(coord(1, 1), faction)) {
             numberOfMyPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(1, 1), faction.getOppositeFaction())) {
+        if (checkForFactionPiecePresence(coord(1, 1), faction.getOppositeFaction())) {
             numberOfOpponentPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(2, 2), faction)) {
+        if (checkForFactionPiecePresence(coord(2, 2), faction)) {
             numberOfMyPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(2, 2), faction.getOppositeFaction())) {
+        if (checkForFactionPiecePresence(coord(2, 2), faction.getOppositeFaction())) {
             numberOfOpponentPieces++;
         }
         return numberOfMyPieces >= 2 && numberOfOpponentPieces == 0;
@@ -212,22 +214,22 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
     private boolean isFactionAboutToWinDiagonally2(Faction faction) {
         int numberOfMyPieces = 0;
         int numberOfOpponentPieces = 0;
-        if (checkForFactionPiecePresence(new Coord(2, 0), faction)) {
+        if (checkForFactionPiecePresence(coord(2, 0), faction)) {
             numberOfMyPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(2, 0), faction.getOppositeFaction())) {
+        if (checkForFactionPiecePresence(coord(2, 0), faction.getOppositeFaction())) {
             numberOfOpponentPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(1, 1), faction)) {
+        if (checkForFactionPiecePresence(coord(1, 1), faction)) {
             numberOfMyPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(1, 1), faction.getOppositeFaction())) {
+        if (checkForFactionPiecePresence(coord(1, 1), faction.getOppositeFaction())) {
             numberOfOpponentPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(0, 2), faction)) {
+        if (checkForFactionPiecePresence(coord(0, 2), faction)) {
             numberOfMyPieces++;
         }
-        if (checkForFactionPiecePresence(new Coord(0, 2), faction.getOppositeFaction())) {
+        if (checkForFactionPiecePresence(coord(0, 2), faction.getOppositeFaction())) {
             numberOfOpponentPieces++;
         }
         return numberOfMyPieces >= 2 && numberOfOpponentPieces == 0;
@@ -264,14 +266,14 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
     }
 
     private Coord getFirstFreeCoordForRow(int row) {
-        if (isThisCoordEmpty(new Coord(row, 0))) {
-            return new Coord(row, 0);
+        if (isThisCoordEmpty(coord(row, 0))) {
+            return coord(row, 0);
         }
-        if (isThisCoordEmpty(new Coord(row, 1))) {
-            return new Coord(row, 1);
+        if (isThisCoordEmpty(coord(row, 1))) {
+            return coord(row, 1);
         }
-        if (isThisCoordEmpty(new Coord(row, 2))) {
-            return new Coord(row, 2);
+        if (isThisCoordEmpty(coord(row, 2))) {
+            return coord(row, 2);
         }
         throw new RuntimeException("Expected free coord for row: " + row + ".");
     }
@@ -290,14 +292,14 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
     }
 
     private Coord getFirstFreeCoordForColumn(int col) {
-        if (isThisCoordEmpty(new Coord(0, col))) {
-            return new Coord(0, col);
+        if (isThisCoordEmpty(coord(0, col))) {
+            return coord(0, col);
         }
-        if (isThisCoordEmpty(new Coord(1, col))) {
-            return new Coord(1, col);
+        if (isThisCoordEmpty(coord(1, col))) {
+            return coord(1, col);
         }
-        if (isThisCoordEmpty(new Coord(2, col))) {
-            return new Coord(2, col);
+        if (isThisCoordEmpty(coord(2, col))) {
+            return coord(2, col);
         }
         throw new RuntimeException("Expected free coord for column: " + col + ".");
     }
@@ -311,27 +313,27 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
     }
 
     private Coord getDiagonalWinningMove1(Faction faction) {
-        if (checkForFactionPiecePresence(new Coord(0, 0), faction)) {
-            return new Coord(0, 0);
+        if (checkForFactionPiecePresence(coord(0, 0), faction)) {
+            return coord(0, 0);
         }
-        if (checkForFactionPiecePresence(new Coord(1, 1), faction)) {
-            return new Coord(1, 1);
+        if (checkForFactionPiecePresence(coord(1, 1), faction)) {
+            return coord(1, 1);
         }
-        if (checkForFactionPiecePresence(new Coord(2, 2), faction)) {
-            return new Coord(2, 2);
+        if (checkForFactionPiecePresence(coord(2, 2), faction)) {
+            return coord(2, 2);
         }
         return null;
     }
 
     private Coord getDiagonalWinningMove2(Faction faction) {
-        if (checkForFactionPiecePresence(new Coord(2, 0), faction)) {
-            return new Coord(2, 0);
+        if (checkForFactionPiecePresence(coord(2, 0), faction)) {
+            return coord(2, 0);
         }
-        if (checkForFactionPiecePresence(new Coord(1, 1), faction)) {
-            return new Coord(1, 1);
+        if (checkForFactionPiecePresence(coord(1, 1), faction)) {
+            return coord(1, 1);
         }
-        if (checkForFactionPiecePresence(new Coord(0, 2), faction)) {
-            return new Coord(0, 2);
+        if (checkForFactionPiecePresence(coord(0, 2), faction)) {
+            return coord(0, 2);
         }
         return null;
     }
@@ -342,7 +344,7 @@ public class TicTacToeBoardAnalyzer extends BoardAnalyzer {
     }
 
     private Coord getMidFieldMove() {
-        return new Coord(1,1);
+        return coord(1,1);
     }
 
     private boolean isFieldEmpty(Coord coord) {

@@ -6,6 +6,8 @@ import tictactoe.faction.OPiece;
 import tictactoe.faction.Piece;
 import tictactoe.faction.XPiece;
 
+import static global.game.CoordManager.coord;
+
 public class TicTacToeBoardSimpleTextVisualizer implements BoardVisualizer<String> {
     private final TicTacToeBoard ticTacToeBoard;
 
@@ -21,15 +23,15 @@ public class TicTacToeBoardSimpleTextVisualizer implements BoardVisualizer<Strin
     }
 
     private String getRow2AsString() {
-        return getRowAsString(new Coord(2, 0), new Coord(2, 1), new Coord(2, 2));
+        return getRowAsString(coord(2, 0), coord(2, 1), coord(2, 2));
     }
 
     private String getRow1AsString() {
-        return getRowAsString(new Coord(1, 0), new Coord(1, 1), new Coord(1, 2)).concat("\n");
+        return getRowAsString(coord(1, 0), coord(1, 1), coord(1, 2)).concat("\n");
     }
 
     private String getRow0AsString() {
-        return getRowAsString(new Coord(0, 0), new Coord(0, 1), new Coord(0, 2)).concat("\n");
+        return getRowAsString(coord(0, 0), coord(0, 1), coord(0, 2)).concat("\n");
     }
 
     private String getRowAsString(Coord coord1, Coord coord2, Coord coord3) {

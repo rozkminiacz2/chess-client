@@ -1,16 +1,15 @@
 package tictactoe.game;
 
-import global.game.Coord;
 import org.junit.jupiter.api.Test;
 
+import static global.game.CoordManager.coord;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static tictactoe.faction.Piece.*;
-import static tictactoe.faction.TicTacToeFactionFactory.XPiece;
-import static tictactoe.faction.TicTacToeFactionFactory.OPiece;
+import static tictactoe.faction.FactionManager.XPiece;
+import static tictactoe.faction.FactionManager.OPiece;
 
 public class TicTacToeBoardTest {
-
 
     @Test
     void shouldEvaluateNextMove1() {
@@ -20,8 +19,8 @@ public class TicTacToeBoardTest {
                 .withRow2(E, E, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(new Coord(2, 1));
-        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(new Coord(2, 0));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(coord(2, 1));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(coord(2, 0));
     }
 
     @Test
@@ -32,8 +31,8 @@ public class TicTacToeBoardTest {
                 .withRow2(E, E, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(new Coord(2, 2));
-        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(new Coord(2, 2));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(coord(2, 2));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(coord(2, 2));
     }
 
     @Test
@@ -44,8 +43,8 @@ public class TicTacToeBoardTest {
                 .withRow2(X, E, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(new Coord(0, 0));
-        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(new Coord(0, 0));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(coord(0, 0));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(coord(0, 0));
     }
 
     @Test
@@ -56,8 +55,8 @@ public class TicTacToeBoardTest {
                 .withRow2(E, E, X)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(new Coord(0, 2));
-        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(new Coord(0, 2));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).isEqualTo(coord(0, 2));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).isEqualTo(coord(0, 2));
     }
 
     @Test
@@ -68,7 +67,7 @@ public class TicTacToeBoardTest {
                 .withRow2(E, E, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(XPiece())).usingRecursiveComparison().isEqualTo(new Coord(2, 1));
+        assertThat(analyzer.getNextMoveCoord(XPiece())).usingRecursiveComparison().isEqualTo(coord(2, 1));
     }
 
     @Test
@@ -79,7 +78,7 @@ public class TicTacToeBoardTest {
                 .withRow2(E, O, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(OPiece())).usingRecursiveComparison().isEqualTo(new Coord(1, 1));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).usingRecursiveComparison().isEqualTo(coord(1, 1));
     }
 
     @Test
@@ -90,7 +89,7 @@ public class TicTacToeBoardTest {
                 .withRow2(E, O, E)
                 .build();
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
-        assertThat(analyzer.getNextMoveCoord(OPiece())).usingRecursiveComparison().isEqualTo(new Coord(1, 1));
+        assertThat(analyzer.getNextMoveCoord(OPiece())).usingRecursiveComparison().isEqualTo(coord(1, 1));
     }
 
     @Test
@@ -103,7 +102,7 @@ public class TicTacToeBoardTest {
         TicTacToeBoardAnalyzer analyzer = new TicTacToeBoardAnalyzer(board);
         assertThat(analyzer.getNextMoveCoord(OPiece()))
                 .usingRecursiveComparison()
-                .isIn(new Coord(0, 2), new Coord(2, 0), new Coord(2, 2), new Coord(0, 0));
+                .isIn(coord(0, 2), coord(2, 0), coord(2, 2), coord(0, 0));
     }
 
     @Test

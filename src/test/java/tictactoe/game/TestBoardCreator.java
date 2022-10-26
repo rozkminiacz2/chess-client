@@ -1,10 +1,10 @@
 package tictactoe.game;
 
-import global.game.Coord;
 import tictactoe.faction.Piece;
 
-import static tictactoe.faction.TicTacToeFactionFactory.XPiece;
-import static tictactoe.faction.TicTacToeFactionFactory.OPiece;
+import static global.game.CoordManager.coord;
+import static tictactoe.faction.FactionManager.XPiece;
+import static tictactoe.faction.FactionManager.OPiece;
 
 public class TestBoardCreator {
 
@@ -37,10 +37,10 @@ public class TestBoardCreator {
 
     private void insertPiece(int row, int column, Piece piece) {
         if (piece.equals(Piece.X)) {
-            board.insert(XPiece(), new Coord(row, column));
+            board.insert(XPiece(), coord(row, column));
         }
         if (piece.equals(Piece.O)) {
-            board.insert(OPiece(), new Coord(row, column));
+            board.insert(OPiece(), coord(row, column));
         }
     }
 }

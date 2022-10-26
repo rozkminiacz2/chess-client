@@ -1,6 +1,6 @@
 package tictactoe.faction;
 
-public class TicTacToeFactionFactory {
+public class FactionManager {
 
     private static final XPiece xpiece = new XPiece();
     private static final OPiece opiece = new OPiece();
