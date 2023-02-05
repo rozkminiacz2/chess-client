@@ -1,12 +1,12 @@
 package global.game;
 
 public class Status {
-    private final int playId;
+    private final int gameId;
     private final Board board;
     private final boolean yourMove;
 
-    public Status(int playId, Board board, boolean yourMove) {
-        this.playId = playId;
+    public Status(int gameId, Board board, boolean yourMove) {
+        this.gameId = gameId;
         this.board = board;
         this.yourMove = yourMove;
     }
@@ -19,7 +19,7 @@ public class Status {
         return yourMove;
     }
 
-    public int getPlayId() {
-        return playId;
+    public int getGameId() {
+        return gameId;
     }
 }

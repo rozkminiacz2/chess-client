@@ -11,15 +11,15 @@ public abstract class GameServerConnector {
 
     public abstract boolean publish(Move move);
 
-    public abstract List<Status> getHistoricalPlayList(int clientId);
+    public abstract List<Status> getHistoricalGameList(int clientId);
 
-    public abstract List<Status> getActivePlayList(int clientId);
+    public abstract List<Status> getActiveGameList(int clientId);
 
-    public abstract Status getStatusOfPlay(int playId);
+    public abstract Status getStatusOfGame(int playId);
 
     public abstract int hostGame(Faction myFaction);
 
-    public abstract int joinGame(int playId);
+    public abstract int joinGame(int gameId);
 
     public abstract Map<Integer, Faction> browseGamesToJoin();
 }

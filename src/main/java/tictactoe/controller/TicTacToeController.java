@@ -10,8 +10,8 @@ import tictactoe.game.TicTacToeMove;
 
 public class TicTacToeController extends GameController {
 
-    public TicTacToeController(int playId, Faction myFaction, Faction startingFaction) {
-        super(playId, myFaction);
+    public TicTacToeController(int gameId, Faction myFaction, Faction startingFaction) {
+        super(gameId, myFaction);
         board = new TicTacToeBoard(startingFaction);
         analyzer = new TicTacToeBoardAnalyzer((TicTacToeBoard) board);
     }

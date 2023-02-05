@@ -15,24 +15,24 @@ public class ClientController {
         this.gameServerConnector = gameServerConnector;
     }
 
-    public Status getStatusOfPlay(int playId) {
-        return gameServerConnector.getStatusOfPlay(playId);
+    public Status getStatusOfGame(int gameId) {
+        return gameServerConnector.getStatusOfGame(gameId);
     }
 
     public boolean publishNextMove() {
         return gameServerConnector.publish(gameController.getNextMove());
     }
 
-    public List<Status> getHistoricalPlayList(int clientId) {
-        return gameServerConnector.getHistoricalPlayList(clientId);
+    public List<Status> getHistoricalGameList(int clientId) {
+        return gameServerConnector.getHistoricalGameList(clientId);
     }
 
-    public List<Status> getActivePlayList(int clientId) {
-        return gameServerConnector.getActivePlayList(clientId);
+    public List<Status> getActiveGameList(int clientId) {
+        return gameServerConnector.getActiveGameList(clientId);
     }
 
-    public boolean setPlayAsCurrent(int playId) {
-        Status status = getStatusOfPlay(playId);
+    public boolean setGameAsCurrent(int gameId) {
+        Status status = getStatusOfGame(gameId);
         if (!status.isYourMove()) {
             return false;
         }
